@@ -1,0 +1,8 @@
+student.Where(g => g.AverageGrade >= 5.00)
+.OrderBy(n => n.Name)
+.ThenByDescending(n => n.AverageGrade)
+.ToList()
+.ForEach(f => Console.WriteLine($"{f.Name} -> {f.AverageGrade:F2}"));
+
+          //First get studs with avergGrade big than 5.00, order by name, THEN by grade. If its ToList -> there is foreach method.
+	  // Name and AverageGrade are properties of object Student, who is saved in List<Student> students;
