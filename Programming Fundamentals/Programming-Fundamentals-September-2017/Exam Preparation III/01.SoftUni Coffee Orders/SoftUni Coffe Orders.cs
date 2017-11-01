@@ -5,7 +5,7 @@
     public class Program
     {
         public static void Main()
-        {
+        {                                               // 100/100 Points
             long n = long.Parse(Console.ReadLine());
             DateTime date = new DateTime();
             decimal total = 0;

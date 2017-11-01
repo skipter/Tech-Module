@@ -6,73 +6,121 @@
     public class CommandIntrepreter
     {
         public static void Main()
-        {
-            var numbers = Console.ReadLine()
-                .Split(new char[] { ' ', }
-                , StringSplitOptions.RemoveEmptyEntries)
+        {                                               // 90/100 Points
+            List<string> numbers = Console.ReadLine()
+                .Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
 
-            string input = Console.ReadLine();
-            var reverse = new List<string>();
-            var sort = new List<string>();
-
-            while (input != "end")
+            while (true)
             {
-                var comm = input
-                    .Split(new char[] { ' ', }
-                    , StringSplitOptions.RemoveEmptyEntries)
-                    .ToList();
-
-                int start;
-                int end;
-
-                if (input.Contains("reverse"))
+                string[] command = Console.ReadLine().Split(' ').ToArray();
+                if (command[0] == "end")
                 {
-                    start = int.Parse(comm[2]);
-                    end = int.Parse(comm[4]);
-                    if (start < end)
-                    {
-                        reverse = numbers.Skip(start).Reverse().Skip(end).ToList();
-                        numbers.RemoveRange(start, end);
-                        numbers.InsertRange(start, reverse);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input parameters.");
-                    }
+                    break;
                 }
-                else if (input.Contains("sort"))
+                string input = command[0];
+                switch (input)
                 {
-                    start = int.Parse(comm[2]);
-                    end = int.Parse(comm[4]);
-                   if (start < 0 || end < 0)
-                   {
-                        Console.WriteLine("Invalid input parameters.");
-                    }
-                    else
-                    {
-                        sort = numbers.Skip(start).Reverse().Skip(end).OrderBy(x => x).ToList();
-                        numbers.RemoveRange(start, end);
-                        numbers.InsertRange(start, sort);
-                    }
-
+                    case "reverse":
+                        Reverse(numbers, command);
+                        break;
+                    case "sort":
+                        Sort(numbers, command);
+                        break;
+                    case "rollLeft":
+                        RollLeft(numbers, command);
+                        break;
+                    case "rollRight":
+                        RollRight(numbers, command);
+                        break;
                 }
-                else if (input.Contains("rollLeft"))
-                {
-                    int index;
-                    var n = int.TryParse(comm[1], out index);
-                    index = index % numbers.Count;
-                    var remove = numbers.Take(index).ToList();
-                    numbers.RemoveRange(0, index);
-                    numbers.AddRange(remove);
-                }
-                else if (input.Contains("rollRight"))
-                {
-
-                }
-                input = Console.ReadLine();
             }
-            Console.WriteLine($"[{String.Join(", ", numbers)}]");
+            Console.WriteLine($"[{string.Join(", ", numbers)}]");
+        }
+
+        public static List<string> RollRight(List<string> numbers, string[] command)
+        {
+            int count = int.Parse(command[1]);
+            if (count < 0)
+            {
+                Console.WriteLine("Invalid input parameters.");
+                return numbers;
+            }
+            for (int i = 0; i < count % numbers.Count; i++)
+            {
+                if (i > numbers.Count)
+                {
+                    return numbers;
+                }
+                string temp = numbers.Last();
+                numbers.RemoveAt(numbers.Count - 1);
+                numbers.Insert(0, temp);
+            }
+            return numbers;
+        }
+
+        public static List<string> RollLeft(List<string> numbers, string[] command)
+        {
+            int count = int.Parse(command[1]);
+
+            if (count < 0)
+            {
+                Console.WriteLine("Invalid input parameters.");
+                return numbers;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (numbers.Count < i)
+                {
+                    return numbers;
+                }
+                string temp = numbers[0];
+                numbers.RemoveAt(0);
+                numbers.Add(temp);
+            }
+            return numbers;
+            // int index = int.Parse(command[1]);
+            // if (index < 0)
+            // {
+            //     Console.WriteLine("Invalid input parameters.");
+            // }
+            // index = index % numbers.Count;
+            // var remove = numbers.Take(index).ToList();
+            // numbers.RemoveRange(0, index);
+            // numbers.AddRange(remove);
+            // return numbers;
+        }
+
+        public static List<string> Sort(List<string> numbers, string[] command)
+        {
+            int start = int.Parse(command[2]);
+            int end = int.Parse(command[4]);
+            if (start < 0 || start >= numbers.Count || end < 0 || end > numbers.Count || start + end > numbers.Count)
+            {
+                Console.WriteLine("Invalid input parameters.");
+                return numbers;
+            }
+            else
+            {
+                numbers.Sort(start, end, null);
+                return numbers;
+            }
+        }
+        public static List<string> Reverse(List<string> numbers, string[] command)
+        {
+            int start = int.Parse(command[2]);
+            int count = int.Parse(command[4]);
+            if (start < 0 || start >= numbers.Count || count < 0 || count > numbers.Count || start + count > numbers.Count)
+            {
+                Console.WriteLine("Invalid input parameters.");
+                return numbers;
+            }
+            else
+            {
+                numbers.Reverse(start, count);
+                return numbers;
+            }
         }
     }
 }
