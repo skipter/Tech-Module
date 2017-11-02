@@ -46,11 +46,11 @@
             Dictionary<string, int> final = new Dictionary<string, int>();
             foreach (var item in withModAndDir)
             {
-                var fiki = item.Split(new char[] { ';', '\\' });
+                var getEndStr = item.Split(new char[] { ';', '\\' });
                 foreach (var words in item)
                 {
-                    string modify = fiki[fiki.Length - 2];
-                    int usage = int.Parse(fiki[fiki.Length - 1]);
+                    string modify = getEndStr[getEndStr.Length - 2];
+                    int usage = int.Parse(getEndStr[getEndStr.Length - 1]);
 
                     if (!final.ContainsKey(modify))
                     {
