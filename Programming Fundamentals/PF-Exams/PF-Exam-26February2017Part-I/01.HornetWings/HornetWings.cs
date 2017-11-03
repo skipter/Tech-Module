@@ -4,7 +4,7 @@
     public class HornetWings
     {
         static void Main()
-        {
+        {                                               // 100/100 Points
             int wingFlaps = int.Parse(Console.ReadLine());
             double distancePer1000flaps = double.Parse(Console.ReadLine()); // for/per 1000 wing flaps
             int endurance = int.Parse(Console.ReadLine());
