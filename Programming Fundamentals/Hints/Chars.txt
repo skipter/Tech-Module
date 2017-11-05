@@ -3,7 +3,6 @@ string data = "ABCDEFGHIJ1fFJKAL";
 List<char> datalist = new List<char>();
 datalist.AddRange(data);
 
-
 //Събиране на стойностите на char-овете
 int sum = 0;
 string word = Console.ReadLine();
