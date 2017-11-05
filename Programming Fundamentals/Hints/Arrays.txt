@@ -75,3 +75,18 @@ var array = input.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
 int[] myInts = Array.ConvertAll(arr, s => int.Parse(s));
 или
 var numberArray = Array.ConvertAll(numberArrayString, Int32.Parse);
+
+//Създава копие на част от List в други list или array. Стартира от Index 2 копира 3 на брой елемента.
+string[] output = dinosaurs.GetRange(2, 3).ToArray();
+var output = dinosaurs.GetRange(2, 3).ToList();
+
+//Преобразува string в list от char
+string data = "ABCDEFGHIJ1fFJKAL";
+List<char> datalist = new List<char>();
+datalist.AddRange(data);
+
+//Създава array използвайки стринг за delimiter 
+string[] numbersLine = line.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+
+//Създава array от стрингове
+string [] cardArray = {"2c","3c","4c","5c","6c","7c"};

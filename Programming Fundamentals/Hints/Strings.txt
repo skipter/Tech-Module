@@ -1,0 +1,117 @@
+//StringBuilder - повтаряне на определен стринг(str) няколко пъти(repetitions)
+string temp = new StringBuilder().Insert(0, str, repetitions).ToString();
+		
+//Преобразува String to Char Array, но и дава числовите стойности по ASCII на char-овете
+var stringToChar = Encoding.ASCII.GetBytes(currentPurchace);
+
+// преобразува от десетична в двуична бройна система
+string binary = Convert.ToString(value, 2);
+
+//Substring
+string input = "OneTwoThree";
+
+        // Get first three characters.
+        string sub = input.Substring(0, 3);
+        Console.WriteLine("Substring: {0}", sub);
+
+//(без LINQ)Преобразува String to Int32(element е произволно име)
+stringToInt = Array.ConvertAll(stringToChar,(element => (int)element));
+
+//Разделяне на стринг на различни части. Get first three characters.
+string input = "OneTwoThree";
+string sub = input.Substring(0, 3); //започва от нулевия и брои три char
+Console.WriteLine("Substring: {0}", sub); // "One"
+
+/Проверява дали даден string съдържа определена комбинация от chars(дума).
+//Връща int и ако той е <0 думата я няма в стринга:
+	const string value = "Your dog is cute.";
+	if (value.IndexOf("dog") != -1)
+        {
+            Console.WriteLine("string contains dog!");
+        }
+		
+//Проверява дали даден string съдържа определена комбинация от chars(дума)
+//като започва да проверява от определен индекс нататък.
+const string value = "Your dog is cute.";
+	if (value.IndexOf("dog",3) != -1)// value.IndexOf = 5
+        {
+            Console.WriteLine("string contains dog!"); 
+        }
+
+		//Отделя стринг след определен индекс(8):
+string name = value.Substring(8);	
+
+//String Reverse, обръщане на string (два варианта)
+var someString = "abcdefgh"
+var somestringArray = someString.ToCharArray();
+var someStringReversed = string.Join("", somestringArray.Reverse()); // "hgfedcba"
+или
+var firstTeam = new string(teams[0].ToCharArray().Reverse().ToArray());
+//Проверява дали Foo се намира в стринг и на кое място е...
+if (testString.IndexOf("Foo") == 0 && testString.LastIndexOf("Foo") == 0)
+        // "Foo foo foo"
+        return true;
+    else if (testString.IndexOf("Foo") == 0 && testString.LastIndexOf("Foo") > 0)
+        // "Foo foo Foo"
+        return false;
+    else if (testString.Contains("foo")  && testString.IndexOf("Foo") > 0)
+        // "foo Foo foo" or "foo foo Foo"
+        return false; 
+    else if (testString.Contains("foo") && !testString.Contains("Foo"))
+        // "foo foo foo"
+        return true; 
+		
+//Заменя дадена дума("key") в string с друга дума("keyword")
+string output = input.Replace("key ", "keyword ");
+
+//Разделяне на стринг на различни части. Get first three characters.
+string input = "OneTwoThree";
+string sub = input.Substring(0, 3); //започва от нулевия и брои три char
+Console.WriteLine("Substring: {0}", sub); // "One"
+
+//Взима един стринг и образува substring от определен брой chars като пропуска (skip) chars.
+string temp = word.Substring(skip, take);
+
+//Проверява колко пъти определен char('a') се съдържа в string:
+string test = "asdasd";
+int count = test.Split('a').Length - 1;
+
+//Изтрива всички празни полета от string;
+		inputString = inputString.Replace(" ", String.Empty);
+
+							ESCAPING EXAMPLES	
+=============================================================================
+|		REGULAR LITERAL		|	VERBATIM LITERAL	|	RESULTING STRING	|
+=============================================================================
+|	"Hello"					|	@"Hello"			|	Hello				|
+-----------------------------------------------------------------------------
+|	"Backslash: \\"			|	@"Backslash: \"		|	Backslash: \		|
+-----------------------------------------------------------------------------
+|	"Quote: \""				|	@"Quote: """		|	Quote: "			|
+-----------------------------------------------------------------------------
+|	"CELF: \r\nPost CELF"	|	@"CRLF:				|	CRLF:				|	// CR-Carriage return
+|							|	Post CRLF"			|	Post CRLF			|	// LF-Line feed
+=============================================================================
+
+string a = "hello, world";					// hello, world
+string b = @"hello, world";					// hello, world
+string c = "hello \t world";				// hello     world
+string d = @"hello \t world";               // hello \t world
+string e = "Joe said \"Hello\" to me";      // Joe said "Hello" to me
+string f = @"Joe said ""Hello"" to me";		// Joe said "Hello" to me
+string g = "\\\\server\\share\\file.txt";   // \\server\share\file.txt
+string h = @"\\server\share\file.txt";      // \\server\share\file.txt
+string i = "one\r\ntwo\r\nthree";
+string j = @"one
+two
+three";
+
+//Проверява колко пъти определен char('a') се съдържа в string:
+string test = "asdasd";
+int count = test.Split('a').Length - 1;
+
+
+			
+		
+		
+
