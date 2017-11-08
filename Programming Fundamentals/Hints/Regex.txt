@@ -24,6 +24,7 @@ abc…	Letters
 (a(bc))	Capture Sub-group
 (.*)	Capture all
 (abc|def)	Matches abc or def
+[^\s]+  Match everything except whitespaces. You can add chars, nums and symbols in [] to Not match hem.
 
 //Regex - подменя N*t с NET
 // This is the input string we are replacing parts from.
