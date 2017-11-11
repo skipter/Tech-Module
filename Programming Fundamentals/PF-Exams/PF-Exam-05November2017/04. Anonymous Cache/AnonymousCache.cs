@@ -5,53 +5,74 @@
     using System.Linq;
     public class AnonymousCache
     {
-        public static void Main()
-        {
+        public static void Main()                               // 90/100 Points - Missing Case
+        {                           
             Dictionary<string, Dictionary<string, long>> data = new Dictionary<string, Dictionary<string, long>>();
-            string inputData = Console.ReadLine();
 
-            while (inputData != "thetinggoesskrra")
+            string input = Console.ReadLine();
+
+            while (input != "thetinggoesskrra")
             {
-                var tokensData = inputData
-                    .Split(new char[] { '>', ' ', '-', '|', }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (tokensData.Length == 0)
+                var commands = input.Split(new string[] { " -> ", " | ", "-", ">", "|", " ", }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                if (commands.Count == 0)
                 {
-                    inputData = Console.ReadLine();
+                    input = Console.ReadLine();
                 }
-                if (tokensData.Length == 1)
+                if (commands.Count == 1)
                 {
-                    if (data.ContainsKey(tokensData[0]))
+                    if (data.ContainsKey(commands[0]))
                     {
 
                     }
-                    else if (!data.ContainsKey(tokensData[0]))
+                    else if (!data.ContainsKey(commands[0]))
                     {
-                        data.Add(tokensData[0], new Dictionary<string, long>());
+                        data.Add(commands[0], new Dictionary<string, long>());
                     }
                 }
-                else if (tokensData.Length != 0 && tokensData.Length > 1)
+                else if (commands.Count != 1)
                 {
-                    string dataKey = tokensData[0];
-                    string currentData = tokensData[1];
-                    long dataSize = long.Parse(tokensData[2]);
-                    if (data.ContainsKey(dataKey))
-                        if (!data.ContainsKey(dataKey))
+                    string dataKey = commands[0];
+                    long num = long.Parse(commands[1]);
+                    string key = commands[2];
+
+                    if (!data.ContainsKey(key))
                     {
-                        data.Add(dataKey,new Dictionary<string, long>());
-                        data[dataKey].Add(currentData, dataSize);
+                        data.Add(key, new Dictionary<string, long>());
+                        data[key].Add(dataKey, num);
                     }
-                    if (!data[dataKey].ContainsKey(currentData))
+                    if (!data[key].ContainsKey(dataKey))
                     {
-                        data[dataKey].Add(currentData, dataSize);
+                        data[key].Add(dataKey, 0);
                     }
-                    data[dataKey][currentData] = dataSize;
+                    if (data[key].ContainsKey(dataKey))
+                    {
+                        data[key][dataKey] += num;
+                    }
+                    data[key][dataKey] = num;
                 }
-                inputData = Console.ReadLine();
+
+                input = Console.ReadLine();
             }
-            foreach (var dataBase in data.OrderBy(x => x.Value))
+            if (data.Count == 0) return;
+            if (data.Count > 0)
             {
-                Console.WriteLine($"Data Set: {dataBase}, Total Size: {dataBase.Value}");
+                foreach (var item in data.OrderByDescending(x => x.Value.Values.Sum()))
+                {
+                    int count = 0;
+                    if (count != 1)
+                    {
+                        Console.WriteLine($"Data Set: {item.Key}, Total Size: {item.Value.Values.Sum()}");
+
+                        foreach (var items in item.Value)
+                        {
+                            var dataBaseInput = items.Key;
+
+                            Console.WriteLine($"$.{dataBaseInput}");
+                        }
+                        count++;
+                        break;
+                    }
+                }
             }
         }
     }
