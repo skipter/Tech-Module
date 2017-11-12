@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Hornet Wings", "02. Hor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Poke Mon", "03. Poke Mon\03. Poke Mon.csproj", "{FBA80581-DC7F-44FE-8757-335A3C8EC50C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Resurrection", "04. Resurrection\04. Resurrection.csproj", "{566F3631-2B61-459B-A89E-51928BCE07F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Wormtest", "05. Wormtest\05. Wormtest.csproj", "{9FD95D8B-071D-4406-94B0-E7F64E4F0057}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{FBA80581-DC7F-44FE-8757-335A3C8EC50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBA80581-DC7F-44FE-8757-335A3C8EC50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBA80581-DC7F-44FE-8757-335A3C8EC50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566F3631-2B61-459B-A89E-51928BCE07F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566F3631-2B61-459B-A89E-51928BCE07F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566F3631-2B61-459B-A89E-51928BCE07F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566F3631-2B61-459B-A89E-51928BCE07F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD95D8B-071D-4406-94B0-E7F64E4F0057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD95D8B-071D-4406-94B0-E7F64E4F0057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD95D8B-071D-4406-94B0-E7F64E4F0057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD95D8B-071D-4406-94B0-E7F64E4F0057}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

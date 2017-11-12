@@ -5,11 +5,33 @@
     {
         public static void Main()
         {
-            long pokePower = long.Parse(Console.ReadLine());
-            long distanceBetweenTargets = long.Parse(Console.ReadLine());
-            long exhaustionFactor = long.Parse(Console.ReadLine());
-
-
+            int n = int.Parse(Console.ReadLine());
+            int m = int.Parse(Console.ReadLine());
+            int y = int.Parse(Console.ReadLine());
+            int counter = 0;
+            double divide = n / 2.0;
+            while (n >= m)
+            {
+                if (n == divide)
+                {
+                    if (y != 0)
+                    {
+                        n = n / y;
+                    }
+                    if (n >= m)
+                    {
+                        n -= m;
+                        counter++;
+                    }
+                }
+                else
+                {
+                    n -= m;
+                    counter++;
+                }
+            }
+            Console.WriteLine(n);
+            Console.WriteLine(counter);
         }
     }
 }
