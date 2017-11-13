@@ -2,7 +2,7 @@
 {
     using System;
     using System.Globalization;
-    public class Program
+    public class SinoTheWalker
     {
         static void Main()
         {
