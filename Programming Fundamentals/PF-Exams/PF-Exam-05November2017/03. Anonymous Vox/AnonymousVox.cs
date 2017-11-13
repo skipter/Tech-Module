@@ -1,65 +1,36 @@
 ﻿namespace _03.Anonymous_Vox
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-
-    public class AnonymousVox
+    using System.Text.RegularExpressions;
+    public class AnonymousThreat
     {
         public static void Main()
         {
-            var data = Console.ReadLine().Split(' ').ToList();
-            string input = Console.ReadLine();
-
-            while (input != "3:1")
+            string encodedText = Console.ReadLine();
+            var placeHolders = Console.ReadLine()
+                .Split(new char[] { '{', '}', }, StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
+            string pattern = @"([a-zA-Z]+)(.+)\1";  // \1 - Match the same text as first group.
+            Regex regex = new Regex(pattern);
+            MatchCollection matches = regex.Matches(encodedText);
+            int placeholderIndex = 0;
+            foreach (Match match in matches)
             {
-                var tokens = input.Split(' ');
-                string command = tokens[0];
-                int num = int.Parse(tokens[1]);
-                int num2 = int.Parse(tokens[2]);
-
-                if (command == "merge")
+                if (placeholderIndex >= placeHolders.Count)
                 {
-                    if (num < 0)
-                    {
-                        num = 0;
-                    }
-                    if (num2 >= data.Count)
-                    {
-                        num2 = data.Count - 1;
-                    }
-                    for (int i = num; i < num2 - 1; i++)
-                    {
-                        data[num] += data[num2 - 1];
-                        data.RemoveAt(num + 1);
-                    }
+                    break;
                 }
-                else 
-                {
-                    int index = num;
-                    int partitions = num2;
-                    string divide = data[index];
-                    int divCounter = divide.Length / partitions;
-                    string addElement = null;
-
-                    data.RemoveAt(index);
-                    var result = new List<string>();
-
-                    for (int i = 0; i < partitions; i++)
-                    {
-                        addElement = divide.Substring(0, divCounter);
-                        result.Add(addElement);
-                        divide = divide.Substring(divCounter);
-                    }
-                    if (divide != "" && divide != null)
-                    {
-                        result[result.Count - 1] += divide;
-                    }
-                    data.InsertRange(index, result);
-                }
-                input = Console.ReadLine();
+                encodedText = ReplaceFirst(encodedText, match.Groups[2].Value, placeHolders[placeholderIndex++]);
             }
-            Console.WriteLine(String.Join(" ", data));
+            Console.WriteLine(encodedText);
+        }
+        static string ReplaceFirst(string text, string oldValue, string newValue)
+        {
+            string substringWithOldValue = text.Substring(0, text.IndexOf(oldValue) + oldValue.Length);
+            string substringWithNewValue = substringWithOldValue.Replace(oldValue, newValue);
+            return substringWithNewValue + text.Substring(substringWithOldValue.Length);
         }
     }
 }
+
