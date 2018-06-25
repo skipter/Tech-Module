@@ -1,10 +1,13 @@
-function solve(number) {
+function solve([n]) {
 
-    let i;
-    for (i = 1; i <= number; i++) {
+    n = Number(n);
 
+    for (i = 1; i <= n; i++) {
+        let numberAsString = '' + i;
+        if (numberAsString == [...numberAsString].reverse().join('')) {
+            console.log(i)
+        }
     }
-    
 }
 
-solve(100);
+console.log(solve(['750']));
