@@ -2,7 +2,7 @@ function solve(town) {
     let input = arr.map(line => JSON.parse((line)));
     let towns = {};
     for (let entry of input) {
-                
+
     }
 }
 
