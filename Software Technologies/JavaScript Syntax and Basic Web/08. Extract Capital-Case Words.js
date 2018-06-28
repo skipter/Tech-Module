@@ -2,7 +2,8 @@ function solve(arr) {
 
     let text = arr.join(",");
     let myArr = text.split(/\W+/);
-    let upperCase = myArr.filter(isUpperCase);
+    let emptySpaces = myArr.filter(w => w.length > 0);
+    let upperCase = emptySpaces.filter(isUpperCase);
     console.log(upperCase.join(", "));
 
 
