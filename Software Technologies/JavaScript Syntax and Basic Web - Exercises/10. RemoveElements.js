@@ -10,7 +10,6 @@ function elementGame(args) {
         let value = input[1];
         let indexToRemove = input[1];
 
-
         if (command === "add") {
             emptyArr.push(value);
         }
@@ -18,7 +17,7 @@ function elementGame(args) {
             if (emptyArr.length < indexToRemove) {
 
             } else {
-                emptyArr.splice(0, indexToRemove);
+                emptyArr.splice(indexToRemove, 1);
             }
         }
     }
@@ -37,4 +36,11 @@ elementGame([
     'remove 2',
     'remove 0',
     'add 7'
-])
+]);
+
+//elementGame([
+//   'add 3',
+//   'add 5',
+//   'remove 1',
+//   'add 2'
+//]);
