@@ -1,4 +1,4 @@
-function keyValuePairs(args){
+function multipleValue (args) {
 
     let key = args.pop();
     let map = new Map();
@@ -10,23 +10,18 @@ function keyValuePairs(args){
         let key = input[0];
         let value = input[1];
 
-        if (!map.has()) {
+        if (!map.has(key)) {
             map.set(key, []);
         }
         map.get(key).push(value);
     }
     console.log(map.has(key) ? map.get(key).join('\n') : "None");
-
-       // if (map.has(key)) {
-       //     console.log(map.get(key))
-       // } else {
-       //     console.log("None");
-       // }
 }
 
-keyValuePairs([
+multipleValue([
     'key value',
     'key eulav',
     'test tset',
-    'key'
+    'key',
+
 ]);
