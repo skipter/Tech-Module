@@ -1,8 +1,8 @@
 function Calculator (leftOperand, operator, rightOperand) {
 
-    this.leftOperand = Number(leftOperand);
+    this.leftOperand = leftOperand;
     this.operator = operator;
-    this.rightOperand = Number(rightOperand);
+    this.rightOperand = rightOperand;
 
     this.calculateResult = function () {
 
