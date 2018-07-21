@@ -7,10 +7,12 @@ module.exports = {
 
     createPost: (req, res) => {
         let articleArgs = req.body;
+        console.log("req.body");
+        console.log(articleArgs);
 
         let errorMsg = '';
 
-        if (!req.isAuthenticated()) {
+        if (!req.isAuthenticated) {
             errorMsg = 'You should be logged in to make article!'
         } else if (!articleArgs.title) {
             errorMsg = 'Invalid title!';
@@ -19,9 +21,10 @@ module.exports = {
         }
 
         if (errorMsg) {
-            res.render('article/create', {error: errorMsg});
-            return;
+            articleArgs.error = errorMsg;
+            res.render('article/create', articleArgs);
         }
+
         articleArgs.authorId = req.user.id;
 
         Article.create(articleArgs).then(article => {
