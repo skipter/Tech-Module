@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 
+
 module.exports = function (sequelize) {
     const Article = sequelize.define('Article', {
         title:{
@@ -20,7 +21,7 @@ module.exports = function (sequelize) {
         },
     });
 
-    Article.associations = function (models) {
+    Article.associate = function (models) {
         Article.belongsTo(models.User, {
             foreignKey: 'author',
             targetKey: 'id'

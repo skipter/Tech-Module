@@ -1,4 +1,5 @@
 const Article = require('../models').Article;
+const User = require('../models').User;
 
 module.exports = {
     createGet: (req, res) => {
@@ -7,9 +8,6 @@ module.exports = {
 
     createPost: (req, res) => {
         let articleArgs = req.body;
-
-        console.log("req.body");
-        console.log(articleArgs);
 
         let errorMsg = '';
 
@@ -22,8 +20,8 @@ module.exports = {
         }
 
         if (errorMsg) {
-            articleArgs.error = errorMsg;
-            res.render('article/create', articleArgs);
+            res.render('article/create', {error: 'errorMsg'});
+            return;
         }
 
         articleArgs.authorId = req.user.id;
@@ -36,11 +34,15 @@ module.exports = {
         });
     },
 
-    details: (req, res) => {
-        let id = req.params.id;
-        Article.findById(id, {include: [{model: User}]
-        }).then(articles => {
-            res.render('article/details', article.dataValues)
-        });
-    }
+   detailsGet: (req, res) => {
+       let id = req.params.id;
+       Article.findById(id, { include: [
+               {
+                   model: User,
+               }
+           ]
+       }).then(article => {
+           res.render('article/details', article.dataValues)
+       });
+   }
 };

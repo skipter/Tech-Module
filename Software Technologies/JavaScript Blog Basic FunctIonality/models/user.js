@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const encryption = require("../utilities/encryption");
 
+
 module.exports = function (sequelize) {
     const User = sequelize.define('User', {
         email: {
@@ -31,8 +32,13 @@ module.exports = function (sequelize) {
         return inputPasswordHash === this.passwordHash;
     };
 
+    User.associate = (models) => {
+        User.hasMany(models.Article, {
+            foreignKey: 'authorId',
+            sourceKey: 'id'
+        });
+    };
 
     return User;
-
 
 };
