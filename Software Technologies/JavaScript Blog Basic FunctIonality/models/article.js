@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
 
-
-
 module.exports = function (sequelize) {
     const Article = sequelize.define('Article', {
         title:{

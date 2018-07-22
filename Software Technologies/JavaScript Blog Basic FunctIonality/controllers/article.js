@@ -1,7 +1,5 @@
 const Article = require('../models').Article;
 
-
-
 module.exports = {
     createGet: (req, res) => {
         res.render('article/create');
@@ -9,6 +7,7 @@ module.exports = {
 
     createPost: (req, res) => {
         let articleArgs = req.body;
+
         console.log("req.body");
         console.log(articleArgs);
 
