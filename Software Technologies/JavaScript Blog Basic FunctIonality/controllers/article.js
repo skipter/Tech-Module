@@ -1,5 +1,7 @@
 const Article = require('../models').Article;
 
+
+
 module.exports = {
     createGet: (req, res) => {
         res.render('article/create');
@@ -32,6 +34,14 @@ module.exports = {
         }).catch(err => {
             console.log(err.message);
             res.render('article/create', {error: err.message});
+        });
+    },
+
+    details: (req, res) => {
+        let id = req.params.id;
+        Article.findById(id, {include: [{model: User}]
+        }).then(articles => {
+            res.render('article/details', article.dataValues)
         });
     }
 };
