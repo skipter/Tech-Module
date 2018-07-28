@@ -12,10 +12,12 @@
     </form>
     <?php
     if (isset($_GET['num'])) {
-        $num = intval($_GET['num']);
+        $number = intval($_GET['num']);
 
-        for ($i = $num; $i >= 1; $i--) {
-            echo $i . " ";
+        for ($i = $number; $i >= 1; $i--) {
+            if ($i % 2 == 1) {
+                echo $i." ";
+            }
         }
     }
     ?>
