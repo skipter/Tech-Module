@@ -4,6 +4,19 @@ namespace CalculatorBundle\Entity;
 class Calculator
 {
 
-    // TODO add class fields and properties, getters and setters
+    /**
+     * @var float
+     */
+    private $leftOperand;
+
+    /**
+     * @var float
+     */
+    private $rightOperand;
+
+    /**
+     * @var string
+     */
+    private $operator;
 
 }
