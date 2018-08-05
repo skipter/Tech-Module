@@ -14,15 +14,57 @@ class CalculatorController extends Controller
     /**
      * @param Request $request
      *
-     * @Route("/", name="index")
+     * @Route("/", name="index", methods={"GET"})
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
      */
-    public function index(Request $request)
+    public function indexGet(Request $request)
     {
-        // TODO add $form and calculation logic;
-
         return $this->render('calculator/index.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @Route ("/", methods={"POST"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexPost(Request $request)
+    {
+
+        $calculator = new Calculator();
+
+        $form = $this->createForm(CalculatorType:: class, $calculator);
+
+        $form->handleRequest($request);
+
+        if ($form->isSynchronized()) {
+
+            $leftOperand = $calculator->getLeftOperand();
+            $rightOperand = $calculator->getRightOperand();
+            $operator = $calculator->getOperator();
+
+            $result = 0;
+
+            switch ($operator) {
+
+                case '+':
+                    $result = $leftOperand + $rightOperand;
+                    break;
+                case '-':
+                    $result = $leftOperand - $rightOperand;
+                    break;
+                case '*':
+                    $result = $leftOperand * $rightOperand;
+                    break;
+                case '/':
+                    $result = $leftOperand / $rightOperand;
+                    break;
+            }
+
+            return $this->render('calculator/index.html.twig',
+                ['result' => $result, 'form' => $form->createView(), 'calculator' => $calculator, ]);
+
+        }
     }
 }

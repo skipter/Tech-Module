@@ -3,20 +3,63 @@ namespace CalculatorBundle\Entity;
 
 class Calculator
 {
-
+    public $leftOperand;
     /**
      * @var float
      */
-    private $leftOperand;
 
+    public $rightOperand;
     /**
      * @var float
      */
-    private $rightOperand;
 
+    public $operator;
     /**
      * @var string
      */
-    private $operator;
 
+    public function getLeftOperand()
+    {
+        return $this->leftOperand;
+    }
+
+    /**
+     * @param float $leftOperand
+     */
+    public function serLeftOperand($leftOperand)
+    {
+        $this->leftOperand = $leftOperand;
+    }
+
+    /**
+     * @return float
+     */
+    public function getRightOperand()
+    {
+        return $this->rightOperand;
+    }
+
+    /**
+     * @param float $rightOperand
+     */
+    public function serRightOperand($rightOperand)
+    {
+        $this->leftOperand = $rightOperand;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOperator()
+    {
+        return $this->operator;
+    }
+
+    /**
+     * @param string $operator
+     */
+    public function setOperator($operator)
+    {
+        $this->operator = $operator;
+    }
 }
