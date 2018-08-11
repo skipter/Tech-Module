@@ -1,0 +1,23 @@
+<form name="register" method="post">
+    <div>
+        <label>
+            Email: <input type="text" name="user[email]">
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>
+            FullName: <input type="text" name="user[fullName]">
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>
+            Password: <input type="password" name="user[password]">
+        </label>
+    </div>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('register') }}"/>
+    <br>
+    <input type="submit" value="Register">
+
+</form>
