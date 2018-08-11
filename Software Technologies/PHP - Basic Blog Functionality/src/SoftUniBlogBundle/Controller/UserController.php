@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @Route("register")
+     * @Route("/register", name="user_register")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -32,9 +32,9 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute("security_login");
+            return $this->redirectToRoute('security_login');
         }
 
-        return $this->render('user/register.html.twig');
+        return $this->render('user/register.html.twig', ['form'=>$form->createView()]);
     }
 }

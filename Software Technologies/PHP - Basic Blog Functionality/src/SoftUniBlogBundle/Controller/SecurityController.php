@@ -16,4 +16,17 @@ class SecurityController extends Controller
     {
         return $this->render("security/login.html.twig");
     }
+
+    //TODO
+    /**
+     * @Route("/login", name="security_logout")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function logout()
+    {
+        return $this->redirectToRoute("blog_index");
+    }
+
+
 }
