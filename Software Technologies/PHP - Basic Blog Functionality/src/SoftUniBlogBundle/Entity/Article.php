@@ -180,6 +180,7 @@ class Article
 
         return $this;
     }
+
     /**
      * @var User
      *

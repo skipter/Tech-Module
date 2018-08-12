@@ -67,6 +67,10 @@ class User implements UserInterface
         return $this->articles;
     }
 
+    public function _toString()
+    {
+        return "User: ".$this->fullName;
+    }
     /**
      * @param \SoftUniBlogBundle\Entity\Article $article
      *
