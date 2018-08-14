@@ -6,16 +6,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="SoftUniBlogBundle\Repository\UserRepository")
  */
 class User implements UserInterface
 {
-    //region UserRegistration
     /**
      * @var int
      *
@@ -28,7 +26,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @ORM\Column(name="email", type="string", length=100, unique=true)
      */
     private $email;
 
@@ -45,44 +43,19 @@ class User implements UserInterface
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
-    //endregion
-    public function _construct()
-    {
-        $this->articles = new ArrayCollection();
-    }
-    //region Articles
+
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="SoftUniBlogBundle\Entity\Article", mappedBy="author")
      */
-
     private $articles;
 
-    /**
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getArticles()
+    public function __construct()
     {
-        return $this->articles;
+        $this->articles = new ArrayCollection();
     }
 
-    public function _toString()
-    {
-        return "User: ".$this->fullName;
-    }
-    /**
-     * @param \SoftUniBlogBundle\Entity\Article $article
-     *
-     * @return User
-     */
-    public function addArticle(Article $article)
-    {
-        $this->articles[] = $article;
-
-        return $this;
-    }
-    //endregion
 
     /**
      * Get id
@@ -93,7 +66,7 @@ class User implements UserInterface
     {
         return $this->id;
     }
-    //region Email
+
     /**
      * Set email
      *
@@ -117,8 +90,7 @@ class User implements UserInterface
     {
         return $this->email;
     }
-    //endregion
-    //region FullName
+
     /**
      * Set fullName
      *
@@ -142,8 +114,7 @@ class User implements UserInterface
     {
         return $this->fullName;
     }
-    //endregion
-    //region Password
+
     /**
      * Set password
      *
@@ -167,7 +138,7 @@ class User implements UserInterface
     {
         return $this->password;
     }
-    //endregion
+
     /**
      * Returns the roles granted to the user.
      *
@@ -186,7 +157,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return [];
+        return ['ROLE_USER'];
     }
 
     /**
@@ -221,5 +192,30 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    function __toString()
+    {
+        return $this->fullName;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param \SoftUniBlogBundle\Entity\Article $article
+     *
+     * @return User
+     */
+    public function addPost(Article $article)
+    {
+        $this->articles[] = $article;
+        return $this;
+    }
+
 }
 

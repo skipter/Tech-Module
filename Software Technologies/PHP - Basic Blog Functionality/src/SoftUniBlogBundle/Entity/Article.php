@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Article
  *
- * @ORM\Table(name="articles")
+ * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="SoftUniBlogBundle\Repository\ArticleRepository")
  */
 class Article
@@ -54,6 +54,14 @@ class Article
      */
     private $authorId;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="SoftUniBlogBundle\Entity\User", inversedBy="articles")
+     * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
+     *
+     */
+    private $author;
 
     /**
      * Get id
@@ -64,11 +72,7 @@ class Article
     {
         return $this->id;
     }
-
-    public function _construct()
-    {
-        $this->dateAdded = new \DateTime('now');
-    }
+    //region Title
     /**
      * Set title
      *
@@ -92,7 +96,8 @@ class Article
     {
         return $this->title;
     }
-
+    //endregion
+    //region Content
     /**
      * Set content
      *
@@ -116,7 +121,8 @@ class Article
     {
         return $this->content;
     }
-
+    //endregion
+    //region DateAdded
     /**
      * Set dateAdded
      *
@@ -140,27 +146,29 @@ class Article
     {
         return $this->dateAdded;
     }
-
+    //endregion
+    //region Summary
     /**
      * @return string
      */
     public function getSummary()
     {
-        if ($this->summary == null) {
-
+        if ($this->summary === null)
+        {
             $this->setSummary();
         }
         return $this->summary;
     }
 
     /**
-     * @param string $summary
+     * @param string
      */
-    public function setSummary($summary)
+    public function setSummary()
     {
-        $this->summary = substr($this->getContent(), 0, strlen($this->getContent()) / 2) . "...";
+        $this->summary = subsrt($this->getContent(), 0, strlen($this->getContent()) / 2) . "...";
     }
-
+    //endregion
+    //region GetAuthorId
     /**
      * @return int
      */
@@ -170,25 +178,19 @@ class Article
     }
 
     /**
-     * @param integer $authorId
+     * @param int $authorId
      *
      * @return Article
      */
+
     public function setAuthorId($authorId)
     {
         $this->authorId = $authorId;
-
         return $this;
     }
+    //endregion
 
-    /**
-     * @var User
-     *
-     * @ORM\ManyToOne (targetEntity="SoftUniBlogBundle\Entity\User", inversedBy="articles")
-     * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
-     */
-    private $author;
-
+    //region GetAuthor
     /**
      * @return \SoftUniBlogBundle\Entity\User
      */
@@ -205,8 +207,12 @@ class Article
     public function setAuthor(User $author = null)
     {
         $this->author = $author;
-
         return $this;
+    }
+   //endregion
+    public function _construct()
+    {
+        $this->dateAdded = new \DateTime('now');
     }
 }
 
