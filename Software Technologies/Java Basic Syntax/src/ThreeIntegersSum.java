@@ -20,11 +20,23 @@ public class ThreeIntegersSum {
         //ToDo Print the elements, in such way, that num1 <= num2.
 
         if (firstNum + secondNum == thirdNum) {
-            System.out.println(firstNum + " + " +secondNum + " = " + thirdNum);
+            if (firstNum <= secondNum) {
+                System.out.println(firstNum + " + " + secondNum + " = " + thirdNum);
+            } else {
+                System.out.println(secondNum + " + " + firstNum + " = " + thirdNum);
+            }
         } else if (secondNum + thirdNum == firstNum) {
-            System.out.println(secondNum + " + " +thirdNum + " = " + firstNum);
+            if (secondNum <= thirdNum) {
+                System.out.println(secondNum + " + " + thirdNum + " = " + firstNum);
+            } else {
+                System.out.println(thirdNum + " + " + secondNum + " = " + firstNum);
+            }
         } else if (firstNum + thirdNum == secondNum) {
-            System.out.println(firstNum + " + " +thirdNum + " = " + secondNum);
+            if (firstNum <= thirdNum) {
+                System.out.println(firstNum + " + " + thirdNum + " = " + secondNum);
+            } else {
+                System.out.println(thirdNum + " + " + firstNum + " = " + secondNum);
+            }
         } else {
             System.out.println("No");
         }
