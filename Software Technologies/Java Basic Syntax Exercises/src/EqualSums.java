@@ -10,6 +10,16 @@ public class EqualSums {
                 .split("\\s+"))
                 .mapToInt(Integer::parseInt).toArray();
 
-        //ToDo
+        for (int i = 0; i < numbers.length; i++) {
+
+            int leftSum = Arrays.stream(numbers).limit(i).sum();
+            int rightSum = Arrays.stream(numbers).skip(i + 1).sum();
+
+            if (leftSum == rightSum) {
+                System.out.println(i);
+                return;
+            }
+        }
+        System.out.println("no");
     }
 }
