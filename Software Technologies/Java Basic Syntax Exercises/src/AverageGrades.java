@@ -5,6 +5,6 @@ public class AverageGrades {
 
         Scanner scanner = new Scanner(System.in);
 
-        
+
     }
 }
