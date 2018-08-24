@@ -5,6 +5,38 @@ public class Calculator {
     private double rightOperand;
     private String operator;
 
+
+    public Calculator(double leftOperand, double rightOperand, String operator) {
+        this.leftOperand = leftOperand;
+        this.rightOperand = rightOperand;
+        this.operator = operator;
+
+    }
+
+    public double calculateResult() {
+
+        double result;
+
+        switch (this.operator) {
+            case "+":
+                result = this.getLeftOperand() + this.getRightOperand();
+                break;
+            case "-":
+                result = this.getLeftOperand() - this.getRightOperand();
+                break;
+            case "*":
+                result = this.getLeftOperand() * this.getRightOperand();
+                break;
+            case "/":
+                result = this.getLeftOperand() / this.getRightOperand();
+                break;
+                default:
+                    result = 0;
+                    break;
+        }
+        return result;
+    }
+
     public double getLeftOperand() {
         return leftOperand;
     }
