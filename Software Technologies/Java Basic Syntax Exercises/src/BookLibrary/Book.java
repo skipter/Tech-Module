@@ -2,7 +2,7 @@ package BookLibrary;
 
 public class Book {
     private String title;
-    private String aithor;
+    private String author;
     private String publisher;
     private String releaseDate;
     private String ISBN;
@@ -11,7 +11,7 @@ public class Book {
 
     public Book(String title, String author, String publisher, String releaseDate, String ISBN, double price) {
         this.title = title;
-        this.aithor = author;
+        this.author = author;
         this.publisher = publisher;
         this.releaseDate = releaseDate;
         this.ISBN = ISBN;
@@ -23,7 +23,7 @@ public class Book {
     }
 
     public String getAuthor() {
-        return aithor;
+        return author;
     }
 
     public String getPublisher() {
