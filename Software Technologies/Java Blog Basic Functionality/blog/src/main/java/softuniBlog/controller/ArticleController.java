@@ -104,14 +104,22 @@ public class ArticleController {
         model.addAttribute("view", "article/delete");
         model.addAttribute("article", article);
 
-
-
         return "base-layout";
     }
 
+    @PostMapping("/article/delete/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public String deleteProcess(@PathVariable Integer id) {
+        if (!this.articleRepository.exists(id)) {
+            return "redirect:/";
+        }
 
+        Article article = this.articleRepository.findOne(id);
 
+        this.articleRepository.delete(article);
 
+        return "redirect:/";
+    }
 
     @Autowired
     private ArticleRepository articleRepository;
