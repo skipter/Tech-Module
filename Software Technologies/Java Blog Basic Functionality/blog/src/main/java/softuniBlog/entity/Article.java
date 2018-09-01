@@ -25,6 +25,12 @@ public class Article {
         this.id = id;
     }
 
+    @Transient
+    public String getSummary() {
+
+        return this.getContent().substring(0, this.getContent().length() / 2) + "...";
+    }
+
     @Column(nullable = false)
     public String getTitle() {
         return title;
