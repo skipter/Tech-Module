@@ -10,6 +10,8 @@ namespace Blog.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public virtual DbSet<Article> Articles { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         {
             Database.EnsureCreated();

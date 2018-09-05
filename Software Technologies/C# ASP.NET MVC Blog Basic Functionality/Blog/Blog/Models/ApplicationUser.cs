@@ -11,6 +11,6 @@ namespace Blog.Models
     public class ApplicationUser : IdentityUser
     {
         [Required]
-        public string Fullname { get; set; }
+        public string FullName { get; set; }
     }
 }

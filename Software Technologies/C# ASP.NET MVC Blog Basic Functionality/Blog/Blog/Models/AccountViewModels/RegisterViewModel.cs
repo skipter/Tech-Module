@@ -14,7 +14,7 @@ namespace Blog.Models.AccountViewModels
         public string Email { get; set; }
 
         [Required]
-        [EmailAddress]
+        [StringLength(50)]
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 

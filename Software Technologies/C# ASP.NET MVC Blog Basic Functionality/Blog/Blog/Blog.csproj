@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-Blog-7FAFC4BC-8339-4B0F-A9A5-FDC74E96F3CE</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20180905103444_Artisle.cs" />
+    <Compile Remove="Migrations\20180905103444_Artisle.Designer.cs" />
+    <Compile Remove="Migrations\20180905103553_claer.cs" />
+    <Compile Remove="Migrations\20180905103553_claer.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
@@ -17,6 +24,10 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>
