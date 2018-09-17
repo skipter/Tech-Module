@@ -1,0 +1,3 @@
+Comments for all commits in all sections are 
+the same, because there was a problem with the 
+repository and I upload everything again with one push.
