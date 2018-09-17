@@ -1,0 +1,23 @@
+//Преобразува string в list от char
+string data = "ABCDEFGHIJ1fFJKAL";
+List<char> datalist = new List<char>();
+datalist.AddRange(data);
+
+//Събиране на стойностите на char-овете
+int sum = 0;
+string word = Console.ReadLine();
+foreach (var letter in word)
+}
+	sum += letter - 48;
+{
+
+//String to char Array
+string word = Console.ReadLine();
+char[] letters = word.ToCharArray();
+
+//Проверява колко пъти определен char('a') се съдържа в string:
+string test = "asdasd";
+int count = test.Split('a').Length - 1;
+
+//Намира най-последното съвпадение на даден char ('N'):
+int index1 = value.LastIndexOf('N');

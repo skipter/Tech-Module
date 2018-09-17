@@ -1,0 +1,31 @@
+
+					=====================L I N Q============================
+//LINQ който взима всичко по-голямо от 0 и пълни в array
+var coll = leftArr.Where(x => x > 0).ToArray();
+
+// LINQ взима първите 5 елемента от list или array, които са по-големи от 0 и по-малки от 9 и ги пълни в array
+var sumLeft = (from item in items.Take(5) where item > 0 && item >= 9 select item).ToArray();
+
+// LINQ пропуска първите 5 елемента от list или array, които са по-големи от 0 и по-малки от 9 и ги пълни в array
+var sumLeft = (from item in items.Skip(5) where item > 0 && item >= 9 select item).ToArray();
+
+//(LINQ)Преброява колко пъти се среща Char 'a' в string
+var count_A = answers_row.Count(x => x == 'a');
+
+//(LINQ)Намира индексите на всички елементи "Viki" в List/Array и ги вкарва в Array
+var students = new List<string>{"Ani","Viki","Mimi","Viki","Pepi","Gesha"};
+var indexes = Enumerable.Range(0, students.Count).Where(j => students[j] == "Viki").ToArray();
+
+//(LINQ)Преобразува String to Int32(element е произволно име)
+int[] bytesAsInts = yourBytes.Select(x => (int)x).ToArray();
+
+//Harcore ordering
+student.Where(g => g.AverageGrade >= 5.00)
+.OrderBy(n => n.Name)
+.ThenByDescending(n => n.AverageGrade)
+.ToList()
+.ForEach(f => Console.WriteLine($"{f.Name} -> {f.AverageGrade:F2}"));
+
+          //First get studs with avergGrade big than 5.00, order by name, THEN by grade. If its ToList -> there is foreach method.
+	  // Name and AverageGrade are properties of object Student, who is saved in List<Student> students;
+	  

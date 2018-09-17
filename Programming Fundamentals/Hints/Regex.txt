@@ -1,0 +1,99 @@
+﻿========================= Regx =========================
+//----Regex----
+abc…	Letters
+123…	Digits
+\d	Any Digit
+\D	Any Non-digit character
+.	Any Character
+\.	Period
+[abc]	Only a, b, or c
+[^abc]	Not a, b, nor c
+[a-z]	Characters a to z
+[0-9]	Numbers 0 to 9
+\w	Any Alphanumeric character
+\W	Any Non-alphanumeric character
+{m}	m Repetitions
+{m,n}	m to n Repetitions
+*	Zero or more repetitions
++	One or more repetitions
+?	Optional character
+\s	Any Whitespace
+\S	Any Non-whitespace character
+^…$	Starts and ends
+(…)	Capture Group
+(a(bc))	Capture Sub-group
+(.*)	Capture all
+(abc|def)	Matches abc or def
+[^\s]+  Match everything except whitespaces. You can add chars, nums and symbols in [] to Not match hem.
+
+//Regex - подменя N*t с NET
+// This is the input string we are replacing parts from.
+        string input = "Dot Net Not Perls";
+
+        // Use Regex.Replace to replace the pattern in the input.
+        // ... The pattern N.t indicates three letters.
+        // ... N, any character, and t.
+        string output = Regex.Replace(input, "N.t", "NET");
+		Console.WriteLine(output); // -- > отпечатва Dot NET NET Perls
+		
+//Regex - подменя всички char различни от A-Za-z0-9 [^A-Za-z0-9] с нула;
+		inputString = Regex.Replace(inputString, "([^A-Za-z0-9])","0");
+		
+//Regex 
+
+Regex regex = new Regex(@"\d+");
+        Match match = regex.Match("Dot 55 Perls");
+        if (match.Success)
+        {
+            Console.WriteLine(match.Value);
+        }
+		
+//Regex пълнене в array
+var match = Regex.Matches(input, pattern).Cast<Match>().Select(x => x.ToString().ToUpper()).ToArray();
+
+//Regex named groups
+var key = Regex.Escape(Console.ReadLine()); // подменя всички специални Regex chars като ги ескейпва, за да могат да се мачват
+var patternTeams = $@"{key}(?<teams>[A-Za-z]+){key}"; //замества key в pattern, създава една regex група
+var teams = Regex.Matches(input, patternTeams).Cast<Match>().Select(x => x.Groups["teams"].ToString().ToUpper()).ToArray(); //взима всички matches от група teams, прави ги ToUpper и ги пълни в array
+
+//Regex мачва стринг "0:0", сплитва го  с ':' и пълни двете числа в int [] array goals
+var patternGoals = $@"(\d+:\d+)";
+var goals = Regex.Match(input, patternGoals).ToString().Split(':').Select(x => int.Parse(x)).ToArray();
+
+//Regex вади индекса, на който е намерено съвпадение
+var currentPattern = new Regex(@"[^A-Za-z-]+");
+var currentMatch = currentPattern.Match(currentInput);
+var index = currentMatch.Index;
+
+//Regex групи с имена
+// ... Input string.
+        string input = "Left12345Right";
+
+        // ... Use named group in regular expression.
+        var expression = new Regex(@"Left(?<middle>\d+)Right");
+
+        // ... See if we matched.
+        var match = expression.Match(input);
+        if (match.Success)
+        {
+            // ... Get group by name.
+            string result = match.Groups["middle"].Value;
+            Console.WriteLine("Middle: {0}", result);
+        }
+
+//|Regex NextMatch
+string pattern = "a*";
+      string input = "abaabb";
+
+      Match m = Regex.Match(input, pattern);
+      while (m.Success) {
+         Console.WriteLine("'{0}' found at index {1}.", 
+                           m.Value, m.Index);
+	  m = m.NextMatch();}
+		 // The example above displays the following output:
+//       'a' found at index 0.
+//       '' found at index 1.
+//       'aa' found at index 2.
+//       '' found at index 4.
+//       '' found at index 5.
+//       '' found at index 6.
