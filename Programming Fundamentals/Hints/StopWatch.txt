@@ -1,9 +1,0 @@
-//Засичане на време Stopwatch
-using System.Diagnostics;
-Stopwatch stopwatch = new Stopwatch();
-
-stopwatch.Start(); // начало на засичане
-
-stopwatch.Stop(); //край на засичане
-
-Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed); //отпечатване

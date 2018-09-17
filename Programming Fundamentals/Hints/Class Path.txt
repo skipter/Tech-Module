@@ -1,9 +1,0 @@
-//Класът Path. (using System.IO;) - обработка на файлови адреси
-
-string someFileAddress = "C:\\stagelist.txt";
-
-        string extension = Path.GetExtension(someFileAddress); //показва разширението
-        string filename = Path.GetFileName(someFileAddress);//показва името заедно с разширението
-        string filenameNoExtension = Path.GetFileNameWithoutExtension(someFileAddress);//показва само името
-        string root = Path.GetPathRoot(someFileAddress);//показва само root напр. "C:\"
-		char dirSlash = Path.DirectorySeparatorChar;//показва разделителя, който понякога е различен за различните операционни системи.

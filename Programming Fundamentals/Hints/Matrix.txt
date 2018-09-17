@@ -1,5 +1,0 @@
-//Приравняване на две матрици
-if (sArray2.Length == sArray1.Length)
-        {
-            sArray2.CopyTo(sArray1, 0);    
-        }

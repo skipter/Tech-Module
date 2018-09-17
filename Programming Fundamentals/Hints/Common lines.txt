@@ -1,3 +1,0 @@
-//Използване на ?:
-Console.WriteLine("{0}", cleanString.Count == 0 ? "Empty String" : string.Join("", cleanString));
-string concatenated = string.Join(",", values);

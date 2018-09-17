@@ -1,3 +1,0 @@
-// DateTime изписва колко дни има в даден месец от дадена година
-int days = DateTime.DaysInMonth(2014, 9); // September.
-        Console.WriteLine(days);

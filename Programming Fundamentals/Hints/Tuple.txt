@@ -1,6 +1,0 @@
-============================Tuple====================
-var tuple = new Tuple<string, int>("evolutionName", 11);
-        var dict = new Dictionary<string, List<Tuple<string, int>>>();
-        dict.Add("georgi", new List<Tuple<string, int>>());
-        var theList = new List<Tuple<string, int>>();
-        Console.WriteLine();
