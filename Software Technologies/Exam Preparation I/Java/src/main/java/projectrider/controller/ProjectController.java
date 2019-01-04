@@ -25,48 +25,79 @@ public class ProjectController {
     public String index(Model model) {
 
         // TODO
-        return null;
+
+        List<Project> projects = projectRepository.findAll();
+        model.addAttribute("projects", projects);
+        model.addAttribute("view", "project/index");
+
+        return "base-layout";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
 
         // TODO
-        return null;
+
+        model.addAttribute("view", "project/create");
+        return "base-layout";
     }
 
     @PostMapping("/create")
     public String createProcess(Model model, ProjectBindingModel projectBindingModel) {
 
         // TODO
-        return null;
+
+        Project project = new Project();
+        project.setTitle(projectBindingModel.getTitle());
+        project.setDescription(projectBindingModel.getDescription());
+        project.setBudget(projectBindingModel.getBudget());
+
+        projectRepository.saveAndFlush(project);
+
+        return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(Model model, @PathVariable int id) {
 
         // TODO
-        return null;
+
+        Project project = projectRepository.findOne(id);
+        model.addAttribute("project", project);
+        model.addAttribute("view", "project/edit");
+        return "base-layout";
     }
 
     @PostMapping("/edit/{id}")
     public String editProcess(@PathVariable int id, Model model, ProjectBindingModel projectBindingModel) {
 
         // TODO
-        return null;
+
+        Project project = projectRepository.findOne(id);
+        project.setTitle(projectBindingModel.getTitle());
+        project.setDescription(projectBindingModel.getDescription());
+        project.setBudget(projectBindingModel.getBudget());
+
+        projectRepository.saveAndFlush(project);
+
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(Model model, @PathVariable int id) {
 
-        // TODO
-        return null;
+        Project project = projectRepository.findOne(id);
+        model.addAttribute("project", project);
+        model.addAttribute("view", "project/delete");
+        return "base-layout";
     }
 
     @PostMapping("/delete/{id}")
     public String deleteProcess(@PathVariable int id, ProjectBindingModel projectBindingModel) {
 
         // TODO
-        return null;
+
+        projectRepository.delete(id);
+        return "redirect:/";
     }
 }

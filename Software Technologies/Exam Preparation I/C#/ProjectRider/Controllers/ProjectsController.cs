@@ -8,7 +8,7 @@
     {
         private readonly ProjectDbContext context;
 
-        public ProjectController(ProjectDbContext context)
+        public ProjectController(ProjectDbContext context) //database
         {
             this.context = context;
         }
@@ -18,7 +18,8 @@
         public ActionResult Index()
         {
             // TODO
-            return null;
+            var projects = context.Projects.ToList();
+            return View(projects);
         }
 
         [HttpGet]
@@ -26,7 +27,7 @@
         public ActionResult Create()
         {
             // TODO
-            return null;
+            return View();
         }
 
         [HttpPost]
@@ -34,7 +35,9 @@
         public ActionResult Create(Project project)
         {
             // TODO
-            return null;
+            context.Projects.Add(project);
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -42,7 +45,12 @@
         public ActionResult Edit(int id)
         {
             // TODO
-            return null;
+            Project project = context
+                .Projects
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
+
+            return View(project);
         }
 
         [HttpPost]
@@ -51,7 +59,10 @@
         public ActionResult EditConfirm(int id, Project projectModel)
         {
             // TODO
-            return null;
+            context.Projects.Update(projectModel);
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -59,7 +70,13 @@
         public ActionResult Delete(int id)
         {
             // TODO
-            return null;
+
+            Project project = context
+                .Projects
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
+
+            return View(project);
         }
 
         [HttpPost]
@@ -67,8 +84,10 @@
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirm(int id, Project projectModel)
         {
-            // TODO
-            return null;
+            context.Projects.Remove(projectModel);
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
