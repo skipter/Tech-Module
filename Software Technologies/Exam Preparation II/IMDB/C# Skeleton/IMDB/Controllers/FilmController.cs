@@ -19,7 +19,9 @@
         public IActionResult Index()
         {
             // TODO
-            return null;
+
+            var films = dbContext.Films.ToList();
+            return View(films);
         }
 
         [HttpGet]
@@ -27,7 +29,8 @@
         public IActionResult Create()
         {
             // TODO
-            return null;
+
+            return View();
         }
 
         [HttpPost]
@@ -35,14 +38,22 @@
         public IActionResult Create(Film film)
         {
             // TODO
-            return null;
+            dbContext.Films.Add(film);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         [Route("/edit/{id}")]
         public IActionResult Edit(int? id)
         {
-            return null;
+            Film film = dbContext
+                .Films
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
+
+            return View(film);
+           
         }
 
         [HttpPost]
@@ -50,7 +61,11 @@
         public IActionResult Edit(Film film)
         {
             // TODO
-            return null;
+
+            dbContext.Films.Update(film);
+            dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -58,7 +73,13 @@
         public IActionResult Delete(int? id)
         {
             // TODO
-            return null;
+
+            Film film = dbContext
+                .Films
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
+
+            return View(film);
         }
 
         [HttpPost]
@@ -66,7 +87,11 @@
         public IActionResult Delete(Film film)
         {
             // TODO
-            return null;
+
+            dbContext.Films.Remove(film);
+            dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
