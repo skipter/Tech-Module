@@ -1,4 +1,4 @@
-﻿namespace TeisterMask.Controllers
+﻿  namespace TeisterMask.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Models;
@@ -18,14 +18,23 @@
         [Route("")]
         public IActionResult Index()
         {
-            return null;
+            //TODO
+
+            var tasks = dbContext.Tasks.ToList();
+
+            var open = dbContext.Tasks.Where(t => t.Status == "Open").ToList();
+            var inProgress = dbContext.Tasks.Where(t => t.Status == "In Progress").ToList();
+            var finished = dbContext.Tasks.Where(t => t.Status == "Finished").ToList();
+
+            return View(tasks);
         }
 
         [HttpGet]
         [Route("/create")]
         public IActionResult Create()
         {
-            return null;
+            //TODO
+            return View();
         }
 
         [HttpPost]
@@ -33,14 +42,23 @@
         [ValidateAntiForgeryToken]
         public IActionResult Create(Task task)
         {
-            return null;
+            //TODO
+
+            dbContext.Tasks.Add(task);
+            dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         [Route("/edit/{id}")]
         public IActionResult Edit(int id)
         {
-            return null;
+
+            //TODO
+
+            Task task = dbContext.Tasks.Where(p => p.Id == id).FirstOrDefault();
+            return View(task);
         }
 
         [HttpPost]
@@ -48,7 +66,11 @@
         [ValidateAntiForgeryToken]
         public IActionResult EditConfirm(Task taskModel)
         {
-            return null;
+            //TODO
+
+            dbContext.Tasks.Update(taskModel);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

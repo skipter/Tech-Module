@@ -30,5 +30,14 @@ module.exports = {
     },
     editPost: (req, res) => {
         // TODO: Implement me...
+
+        let id = req.params.id;
+        let body = req.body;
+
+        Task.findById(id).then(task => {
+            task.updateAttributes(body).then(()=> {
+                res.redirect('/');
+            })
+        })
     }
 };
